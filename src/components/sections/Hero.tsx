@@ -49,8 +49,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="block text-foreground">Muhammad</span>
-            <span className="block text-neon-primary">Rizwan</span>
+            <span className="block text-neon-primary">VisionarySpaces</span>
           </h1>
 
           {/* Hero Tagline */}
