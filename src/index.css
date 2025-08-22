@@ -2,41 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic Neon Design System for Muhammad Rizwan's Portfolio */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark Futuristic Theme */
+    --background: 220 25% 5%;
+    --foreground: 220 10% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 20% 8%;
+    --card-foreground: 220 10% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 220 10% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Primary (Cyan) */
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 25% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Neon Secondary (Purple) */
+    --secondary: 260 100% 65%;
+    --secondary-foreground: 220 10% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Neon Accent (Blue) */
+    --accent: 220 100% 60%;
+    --accent-foreground: 220 10% 95%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted Dark Tones */
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 65%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Neon Gradients */
+    --gradient-neon-primary: linear-gradient(135deg, hsl(180 100% 50%), hsl(220 100% 60%));
+    --gradient-neon-secondary: linear-gradient(135deg, hsl(260 100% 65%), hsl(300 100% 70%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 25% 5%), hsl(220 20% 8%));
+    --gradient-surface: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 15% 12%));
+
+    /* Neon Glows */
+    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.1);
+    --glow-purple: 0 0 20px hsl(260 100% 65% / 0.3), 0 0 40px hsl(260 100% 65% / 0.1);
+    --glow-blue: 0 0 20px hsl(220 100% 60% / 0.3), 0 0 40px hsl(220 100% 60% / 0.1);
+
+    /* Animation Variables */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +119,126 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background: var(--gradient-dark);
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-neon-primary);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Neon Button Variants */
+  .btn-neon-primary {
+    @apply relative overflow-hidden bg-transparent border border-primary text-primary hover:text-primary-foreground;
+    box-shadow: var(--glow-cyan);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-neon-primary:hover {
+    background: var(--gradient-neon-primary);
+    box-shadow: var(--glow-cyan), 0 0 30px hsl(180 100% 50% / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-neon-secondary {
+    @apply relative overflow-hidden bg-transparent border border-secondary text-secondary hover:text-secondary-foreground;
+    box-shadow: var(--glow-purple);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-neon-secondary:hover {
+    background: var(--gradient-neon-secondary);
+    box-shadow: var(--glow-purple), 0 0 30px hsl(260 100% 65% / 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Neon Cards */
+  .card-neon {
+    @apply relative bg-card border border-border backdrop-blur-sm;
+    background: var(--gradient-surface);
+    transition: var(--transition-smooth);
+  }
+
+  .card-neon:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-4px);
+  }
+
+  /* Neon Text Effects */
+  .text-neon-primary {
+    @apply text-primary;
+    text-shadow: var(--glow-cyan);
+  }
+
+  .text-neon-secondary {
+    @apply text-secondary;
+    text-shadow: var(--glow-purple);
+  }
+
+  /* Animated Underline */
+  .underline-neon {
+    @apply relative;
+  }
+
+  .underline-neon::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--gradient-neon-primary);
+    transition: var(--transition-smooth);
+  }
+
+  .underline-neon:hover::after {
+    width: 100%;
+  }
+
+  /* Floating Animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse Glow Animation */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: var(--glow-cyan);
+    }
+    to {
+      box-shadow: var(--glow-cyan), 0 0 40px hsl(180 100% 50% / 0.6);
+    }
+  }
+
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: -1px -1px;
   }
 }
