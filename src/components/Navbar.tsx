@@ -8,11 +8,8 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("hero");
 
   const navigationItems = [
-    { name: "Home", href: "hero" },
     { name: "About", href: "about" },
     { name: "Portfolio", href: "portfolio" },
-    { name: "Services", href: "services" },
-    { name: "Experience", href: "experience" },
     { name: "Contact", href: "contact" }
   ];
 
@@ -21,7 +18,7 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = navigationItems.map(item => item.href);
+      const sections = ["hero", ...navigationItems.map(item => item.href)];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -61,11 +58,11 @@ const Navbar = () => {
       <nav 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' 
+            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm' 
             : 'bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto container-padding">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div 
@@ -73,14 +70,13 @@ const Navbar = () => {
               onClick={() => scrollToSection('hero')}
             >
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-neon-primary rounded-lg flex items-center justify-center group-hover:shadow-glow-cyan transition-all duration-300">
-                  <span className="text-primary-foreground font-bold text-xl">MR</span>
+                <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-200">
+                  <span className="text-primary-foreground font-bold text-lg">MR</span>
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-neon-secondary rounded-full animate-pulse"></div>
               </div>
-              <div className="ml-4 hidden sm:block">
-                <div className="text-lg font-bold text-neon-primary">Muhammad Rizwan</div>
-                <div className="text-xs text-muted-foreground">Architect & Designer</div>
+              <div className="ml-3 hidden sm:block">
+                <div className="text-lg font-medium text-foreground">Muhammad Rizwan</div>
+                <div className="text-xs text-muted-foreground">Architect</div>
               </div>
             </div>
 
@@ -90,16 +86,11 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative font-medium transition-colors duration-300 underline-neon ${
-                    activeSection === item.href
-                      ? 'text-neon-primary'
-                      : 'text-foreground hover:text-neon-primary'
+                  className={`nav-link ${
+                    activeSection === item.href ? 'active' : ''
                   }`}
                 >
                   {item.name}
-                  {activeSection === item.href && (
-                    <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-neon-primary"></div>
-                  )}
                 </button>
               ))}
             </div>
@@ -107,7 +98,7 @@ const Navbar = () => {
             {/* Desktop CTA */}
             <div className="hidden lg:block">
               <Button 
-                variant="neonPrimary" 
+                variant="default" 
                 onClick={() => scrollToSection('contact')}
               >
                 Let's Talk
@@ -133,16 +124,16 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-background/98 backdrop-blur-md border-t border-border">
-            <div className="container mx-auto px-6 py-6">
+            <div className="container mx-auto container-padding py-6">
               <div className="flex flex-col space-y-4">
                 {navigationItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`text-left py-3 px-4 rounded-lg font-medium transition-colors duration-300 ${
+                    className={`text-left py-3 px-4 rounded-lg font-medium transition-colors duration-200 ${
                       activeSection === item.href
-                        ? 'text-neon-primary bg-primary/10'
-                        : 'text-foreground hover:text-neon-primary hover:bg-muted/50'
+                        ? 'text-primary bg-primary/10'
+                        : 'text-foreground hover:text-primary hover:bg-muted/50'
                     }`}
                   >
                     {item.name}
@@ -150,7 +141,7 @@ const Navbar = () => {
                 ))}
                 <div className="pt-4">
                   <Button 
-                    variant="neonPrimary" 
+                    variant="default" 
                     className="w-full"
                     onClick={() => scrollToSection('contact')}
                   >
@@ -166,9 +157,9 @@ const Navbar = () => {
       {/* Scroll to Top Button */}
       {isScrolled && (
         <Button
-          variant="neonSecondary"
+          variant="secondary"
           size="icon"
-          className="fixed bottom-8 right-8 z-40 shadow-glow-purple"
+          className="fixed bottom-8 right-8 z-40"
           onClick={scrollToTop}
         >
           <ArrowUp className="h-5 w-5" />

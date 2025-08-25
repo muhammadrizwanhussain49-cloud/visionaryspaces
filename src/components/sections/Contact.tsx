@@ -298,7 +298,7 @@ const Contact = () => {
                   
                   <Button 
                     type="submit" 
-                    variant="hero" 
+                    variant="default" 
                     size="lg" 
                     className="w-full group"
                   >
@@ -314,7 +314,7 @@ const Contact = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button 
-                      variant="neonSecondary" 
+                      variant="secondary" 
                       size="sm" 
                       className="flex-1"
                       onClick={() => window.open('mailto:muhammadrizwanhussain49@gmail.com', '_blank')}
@@ -323,7 +323,7 @@ const Contact = () => {
                       Email Directly
                     </Button>
                     <Button 
-                      variant="portfolio" 
+                      variant="outline" 
                       size="sm" 
                       className="flex-1"
                       onClick={() => window.open('tel:+03094987070', '_blank')}

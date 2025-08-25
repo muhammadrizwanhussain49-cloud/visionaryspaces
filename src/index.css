@@ -41,16 +41,14 @@
 
     --radius: 0.5rem;
 
-    /* Professional Gradients */
-    --gradient-neon-primary: linear-gradient(135deg, hsl(78 37% 30%), hsl(78 25% 40%));
-    --gradient-neon-secondary: linear-gradient(135deg, hsl(39 35% 84%), hsl(23 60% 87%));
-    --gradient-dark: linear-gradient(135deg, hsl(40 33% 97%), hsl(39 35% 90%));
+    /* Clean Professional Gradients */
+    --gradient-subtle: linear-gradient(135deg, hsl(40 33% 97%), hsl(39 35% 90%));
     --gradient-surface: linear-gradient(135deg, hsl(0 0% 100%), hsl(39 20% 95%));
 
-    /* Subtle Professional Shadows */
-    --glow-cyan: 0 2px 8px hsl(78 37% 30% / 0.1), 0 4px 16px hsl(78 37% 30% / 0.05);
-    --glow-purple: 0 2px 8px hsl(23 60% 87% / 0.2), 0 4px 16px hsl(23 60% 87% / 0.1);
-    --glow-blue: 0 2px 8px hsl(39 35% 84% / 0.2), 0 4px 16px hsl(39 35% 84% / 0.1);
+    /* Minimal Professional Shadows */
+    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.1), 0 1px 2px hsl(0 0% 0% / 0.06);
+    --shadow-medium: 0 4px 6px hsl(0 0% 0% / 0.07), 0 2px 4px hsl(0 0% 0% / 0.06);
+    --shadow-large: 0 10px 15px hsl(0 0% 0% / 0.1), 0 4px 6px hsl(0 0% 0% / 0.05);
 
     /* Animation Variables */
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -121,7 +119,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    background: var(--gradient-dark);
+    background: var(--gradient-subtle);
     min-height: 100vh;
   }
 
@@ -136,7 +134,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--gradient-neon-primary);
+    background: hsl(var(--primary));
     border-radius: 4px;
     border: 2px solid hsl(var(--background));
   }
@@ -147,102 +145,73 @@
 }
 
 @layer components {
-  /* Professional Button Variants */
-  .btn-neon-primary {
-    @apply relative overflow-hidden bg-primary border border-primary text-primary-foreground hover:bg-primary/90;
-    box-shadow: var(--glow-cyan);
-    transition: var(--transition-smooth);
+  /* Clean Professional Buttons */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200;
   }
 
-  .btn-neon-primary:hover {
-    box-shadow: var(--glow-cyan), 0 4px 12px hsl(78 37% 30% / 0.25);
-    transform: translateY(-1px);
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200;
   }
 
-  .btn-neon-secondary {
-    @apply relative overflow-hidden bg-secondary border border-secondary text-secondary-foreground hover:bg-secondary/90;
-    box-shadow: var(--glow-purple);
-    transition: var(--transition-smooth);
+  .btn-outline {
+    @apply border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-200;
   }
 
-  .btn-neon-secondary:hover {
-    box-shadow: var(--glow-purple), 0 4px 12px hsl(23 60% 87% / 0.3);
-    transform: translateY(-1px);
+  /* Clean Professional Cards */
+  .card-minimal {
+    @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-shadow duration-200;
   }
 
-  /* Professional Cards */
-  .card-neon {
-    @apply relative bg-card border border-border;
-    background: var(--gradient-surface);
-    transition: var(--transition-smooth);
-    box-shadow: 0 1px 3px hsl(0 0% 0% / 0.1);
+  /* Professional Typography */
+  .heading-primary {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-tight;
   }
 
-  .card-neon:hover {
-    border-color: hsl(var(--primary) / 0.3);
-    box-shadow: var(--glow-cyan);
-    transform: translateY(-2px);
+  .heading-secondary {
+    @apply text-2xl md:text-3xl font-light text-foreground tracking-wide;
   }
 
-  /* Professional Text Effects */
-  .text-neon-primary {
-    @apply text-primary font-semibold;
+  .text-body {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
   }
 
-  .text-neon-secondary {
-    @apply text-secondary font-medium;
+  /* Clean Navigation */
+  .nav-link {
+    @apply relative text-foreground hover:text-primary transition-colors duration-200;
   }
 
-  /* Elegant Underline */
-  .underline-neon {
-    @apply relative;
+  .nav-link.active {
+    @apply text-primary;
   }
 
-  .underline-neon::after {
+  .nav-link::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: -2px;
+    height: 1px;
+    bottom: -4px;
     left: 0;
-    background: var(--gradient-neon-primary);
-    transition: var(--transition-smooth);
+    background: hsl(var(--primary));
+    transition: width 0.3s ease;
   }
 
-  .underline-neon:hover::after {
+  .nav-link:hover::after,
+  .nav-link.active::after {
     width: 100%;
   }
 
-  /* Floating Animation */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* Image Overlay */
+  .image-overlay {
+    @apply absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center;
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
   }
 
-  /* Gentle Pulse Animation */
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulse-glow {
-    from {
-      box-shadow: var(--glow-cyan);
-    }
-    to {
-      box-shadow: var(--glow-cyan), 0 4px 20px hsl(78 37% 30% / 0.2);
-    }
-  }
-
-  /* Grid Pattern Background */
-  .grid-pattern {
-    background-image: 
-      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: -1px -1px;
+  .container-padding {
+    @apply px-6 md:px-8 lg:px-12;
   }
 }

@@ -153,7 +153,7 @@ const Services = () => {
                   </ul>
                   
                   <Button 
-                    variant="portfolio" 
+                    variant="outline" 
                     size="sm" 
                     className="w-full group-hover:scale-105 transition-transform duration-300"
                   >
@@ -224,7 +224,7 @@ const Services = () => {
             Let's discuss how I can help bring your architectural vision to life
           </p>
           <Button 
-            variant="hero" 
+            variant="default" 
             size="lg"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >

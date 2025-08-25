@@ -123,7 +123,7 @@ const Footer = () => {
               </div>
               <div className="mt-6">
                 <Button 
-                  variant="neonPrimary" 
+                  variant="default" 
                   size="sm"
                   onClick={() => scrollToSection('contact')}
                 >
