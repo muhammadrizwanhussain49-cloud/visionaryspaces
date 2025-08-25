@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
-const profilePic = "/lovable-uploads/6921e7be-0375-4a3d-993b-ec9222c377ec.png";
+const profilePic = "/lovable-uploads/c9e25fed-2a84-4bf3-bfe4-94c9bd4dd375.png";
 
 const Hero = () => {
   const scrollToPortfolio = () => {
