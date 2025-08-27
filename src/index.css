@@ -241,4 +241,112 @@
     background-size: 50px 50px;
     background-position: -1px -1px;
   }
+
+  /* Radial Gradient for Loading Screen */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Loading Screen Animations */
+  .animate-typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typewriter 2s steps(20, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  /* Enhanced Glow Effects for Loading */
+  .shadow-glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .shadow-glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+
+  .shadow-glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+
+  /* Loading Screen Fade In/Out */
+  .loading-fade-enter {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .loading-fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .loading-fade-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .loading-fade-exit-active {
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Smooth Loading Bar Animation */
+  .loading-bar-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loading-bar-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Scanning Line Animation */
+  .scanning-line {
+    top: 50%;
+    animation: scanning 3s linear infinite;
+  }
+
+  @keyframes scanning {
+    0% { 
+      top: 0%; 
+      opacity: 0; 
+    }
+    50% { 
+      opacity: 0.6; 
+    }
+    100% { 
+      top: 100%; 
+      opacity: 0; 
+    }
+  }
 }
