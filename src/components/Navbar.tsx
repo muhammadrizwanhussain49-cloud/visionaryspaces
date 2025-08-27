@@ -168,7 +168,7 @@ const Navbar = () => {
         <Button
           variant="neonSecondary"
           size="icon"
-          className="fixed bottom-8 right-8 z-40 shadow-glow-purple"
+          className="fixed bottom-8 right-8 z-40 shadow-glow-purple bg-black"
           onClick={scrollToTop}
         >
           <ArrowUp className="h-5 w-5" />
