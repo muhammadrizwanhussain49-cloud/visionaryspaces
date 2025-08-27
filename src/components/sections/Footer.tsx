@@ -122,7 +122,7 @@ const Footer = () => {
                   href="mailto:muhammadrizwanhussain49@gmail.com"
                   className="flex items-center text-foreground/70 hover:text-primary transition-colors group"
                 >
-                  <Mail className="h-9 w-9  text-primary group-hover:animate-bounce" />
+                  <Mail className="h-4 w-4  text-primary group-hover:animate-bounce" />
                   <span className="text-sm">muhammadrizwanhussain49@gmail.com</span>
                 </a>
                 <a 

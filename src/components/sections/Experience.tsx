@@ -70,8 +70,8 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 bg-gradient-surface">
-      <div className="container mx-auto max-w-6xl">
+    <section id="experience" className="py-20 bg-gradient-surface">
+      <div className="container mx-auto ">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-neon-primary">Experience</span> & Education

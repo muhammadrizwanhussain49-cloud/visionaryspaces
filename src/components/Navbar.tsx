@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowUp } from "lucide-react";
+import { Menu, X, ArrowUp, Home, User, Briefcase, Settings, Award, Mail, Github, Linkedin, Instagram, Twitter } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -8,18 +8,25 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("hero");
 
   const navigationItems = [
-    { name: "Home", href: "hero" },
-    { name: "About", href: "about" },
-    { name: "Portfolio", href: "portfolio" },
-    { name: "Services", href: "services" },
-    { name: "Experience", href: "experience" },
-    { name: "Contact", href: "contact" }
+    { name: "Home", href: "hero", icon: Home },
+    { name: "About", href: "about", icon: User },
+    { name: "Portfolio", href: "portfolio", icon: Briefcase },
+    { name: "Services", href: "services", icon: Settings },
+    { name: "Experience", href: "experience", icon: Award },
+    { name: "Contact", href: "contact", icon: Mail }
+  ];
+
+  const socialLinks = [
+    { name: "GitHub", icon: Github, url: "#" },
+    { name: "LinkedIn", icon: Linkedin, url: "#" },
+    { name: "Instagram", icon: Instagram, url: "#" },
+    { name: "Twitter", icon: Twitter, url: "#" }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
       const sections = navigationItems.map(item => item.href);
       const currentSection = sections.find(section => {
@@ -30,7 +37,7 @@ const Navbar = () => {
         }
         return false;
       });
-      
+
       if (currentSection) {
         setActiveSection(currentSection);
       }
@@ -43,7 +50,7 @@ const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
@@ -57,18 +64,17 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Main Navbar */}
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' 
+      {/* Desktop Top Navbar */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  ${isScrolled
+            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg'
             : 'bg-transparent'
-        }`}
+          }`}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div 
+            <div
               className="flex items-center cursor-pointer group"
               onClick={() => scrollToSection('hero')}
             >
@@ -78,7 +84,7 @@ const Navbar = () => {
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-neon-secondary rounded-full animate-pulse"></div>
               </div>
-              <div className="ml-4 hidden sm:block">
+              <div className="ml-4">
                 <div className="text-lg font-bold text-neon-primary">Muhammad Rizwan</div>
                 <div className="text-xs text-muted-foreground">Architect & Designer</div>
               </div>
@@ -90,11 +96,10 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative font-medium transition-colors duration-300 underline-neon ${
-                    activeSection === item.href
+                  className={`relative font-medium transition-colors duration-300 underline-neon ${activeSection === item.href
                       ? 'text-neon-primary'
                       : 'text-foreground hover:text-neon-primary'
-                  }`}
+                    }`}
                 >
                   {item.name}
                   {activeSection === item.href && (
@@ -105,63 +110,103 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:block">
-              <Button 
-                variant="neonPrimary" 
+            <div>
+              <Button
+                variant="neonPrimary"
                 onClick={() => scrollToSection('contact')}
               >
                 Let's Talk
               </Button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-background/98 backdrop-blur-md border-t border-border">
-            <div className="container mx-auto px-6 py-6">
-              <div className="flex flex-col space-y-4">
-                {navigationItems.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className={`text-left py-3 px-4 rounded-lg font-medium transition-colors duration-300 ${
-                      activeSection === item.href
-                        ? 'text-neon-primary bg-primary/10'
-                        : 'text-foreground hover:text-neon-primary hover:bg-muted/50'
-                    }`}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-                <div className="pt-4">
-                  <Button 
-                    variant="neonPrimary" 
-                    className="w-full"
-                    onClick={() => scrollToSection('contact')}
-                  >
-                    Let's Talk
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </nav>
+
+      {/* Left Vertical Navigation - Desktop & Tablet */}
+      <div className="fixed left-1 top-1/2 transform -translate-y-1/2 z-40 hidden md:block lg:hidden">
+        <div className="flex flex-col space-y-4 bg-background/90 backdrop-blur-md rounded-2xl p-4 border border-border shadow-lg">
+          {navigationItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.href)}
+                className={`group relative w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${activeSection === item.href
+                    ? 'bg-primary text-primary-foreground shadow-glow-cyan'
+                    : 'bg-muted hover:bg-primary/20 text-muted-foreground hover:text-primary'
+                  }`}
+                title={item.name}
+              >
+                <IconComponent className="w-5 h-5" />
+                {activeSection === item.href && (
+                  <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-primary rounded-full"></div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Right Social Icons - Desktop & Tablet */}
+      <div className="fixed right-1 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
+        <div className="flex flex-col space-y-3 bg-background/90 backdrop-blur-md rounded-2xl p-4 border border-border shadow-lg">
+          {socialLinks.map((social) => {
+            const IconComponent = social.icon;
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-10 h-10 rounded-lg flex items-center justify-center bg-muted hover:bg-secondary/20 text-muted-foreground hover:text-secondary transition-all duration-300 hover:shadow-glow-purple"
+                title={social.name}
+              >
+                <IconComponent className="w-4 h-4" />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+        <div className="bg-background/95 backdrop-blur-md border-t border-border">
+          <div
+            className={`flex overflow-x-auto no-scrollbar px-2 transition-all duration-300 justify-start sm:justify-center`}
+          >
+            {navigationItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`flex flex-col items-center flex-shrink-0 mx-2 py-2 px-3 transition-all duration-300 
+              ${activeSection === item.href
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                    }`}
+                >
+                  <div
+                    className={`p-1.5 rounded-lg transition-all duration-300 
+                ${activeSection === item.href
+                        ? "bg-primary/20 shadow-glow-cyan"
+                        : "hover:bg-muted"
+                      }`}
+                  >
+                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs mt-1 font-medium">
+                    {item.name}
+                  </span>
+                  {activeSection === item.href && (
+                    <div className="w-4 h-0.5 bg-primary rounded-full mt-1"></div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* Scroll to Top Button */}
       {isScrolled && (
