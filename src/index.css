@@ -2,53 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional Modern Design System for Muhammad Rizwan's Portfolio */
+/* Futuristic Neon Design System for Muhammad Rizwan's Portfolio */
 
 @layer base {
   :root {
-    /* Professional Light Theme */
-    --background: 40 33% 97%; /* Warm White */
-    --foreground: 78 37% 25%; /* Dark Olive */
+    /* Dark Futuristic Theme */
+    --background: 220 25% 5%;
+    --foreground: 220 10% 95%;
 
-    --card: 0 0% 100%; /* Pure White */
-    --card-foreground: 78 37% 25%; /* Dark Olive */
+    --card: 220 20% 8%;
+    --card-foreground: 220 10% 95%;
 
-    --popover: 0 0% 100%; /* Pure White */
-    --popover-foreground: 78 37% 25%; /* Dark Olive */
+    --popover: 220 20% 8%;
+    --popover-foreground: 220 10% 95%;
 
-    /* Olive Green Primary */
-    --primary: 78 37% 30%; /* Olive Green */
-    --primary-foreground: 40 33% 97%; /* Warm White */
+    /* Neon Primary (Cyan) */
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 25% 5%;
 
-    /* Light Beige Secondary */
-    --secondary: 39 35% 84%; /* Light Beige */
-    --secondary-foreground: 78 37% 25%; /* Dark Olive */
+    /* Neon Secondary (Purple) */
+    --secondary: 260 100% 65%;
+    --secondary-foreground: 220 10% 95%;
 
-    /* Muted Peach Accent */
-    --accent: 23 60% 87%; /* Muted Peach */
-    --accent-foreground: 78 37% 25%; /* Dark Olive */
+    /* Neon Accent (Blue) */
+    --accent: 220 100% 60%;
+    --accent-foreground: 220 10% 95%;
 
-    /* Soft Neutral Tones */
-    --muted: 0 0% 92%; /* Light Gray */
-    --muted-foreground: 78 20% 45%; /* Medium Olive */
+    /* Muted Dark Tones */
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 65%;
 
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 85%; /* Soft Gray */
-    --input: 0 0% 95%; /* Very Light Gray */
-    --ring: 78 37% 30%; /* Olive Green */
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Clean Professional Gradients */
-    --gradient-subtle: linear-gradient(135deg, hsl(40 33% 97%), hsl(39 35% 90%));
-    --gradient-surface: linear-gradient(135deg, hsl(0 0% 100%), hsl(39 20% 95%));
+    /* Neon Gradients */
+    --gradient-neon-primary: linear-gradient(135deg, hsl(180 100% 50%), hsl(220 100% 60%));
+    --gradient-neon-secondary: linear-gradient(135deg, hsl(260 100% 65%), hsl(300 100% 70%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 25% 5%), hsl(220 20% 8%));
+    --gradient-surface: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 15% 12%));
 
-    /* Minimal Professional Shadows */
-    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.1), 0 1px 2px hsl(0 0% 0% / 0.06);
-    --shadow-medium: 0 4px 6px hsl(0 0% 0% / 0.07), 0 2px 4px hsl(0 0% 0% / 0.06);
-    --shadow-large: 0 10px 15px hsl(0 0% 0% / 0.1), 0 4px 6px hsl(0 0% 0% / 0.05);
+    /* Neon Glows */
+    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.1);
+    --glow-purple: 0 0 20px hsl(260 100% 65% / 0.3), 0 0 40px hsl(260 100% 65% / 0.1);
+    --glow-blue: 0 0 20px hsl(220 100% 60% / 0.3), 0 0 40px hsl(220 100% 60% / 0.1);
 
     /* Animation Variables */
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -73,42 +75,41 @@
   }
 
   .dark {
-    /* Dark mode with professional tones */
-    --background: 78 20% 12%; /* Dark Olive */
-    --foreground: 40 33% 97%; /* Warm White */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 78 15% 15%; /* Darker Olive */
-    --card-foreground: 40 33% 97%; /* Warm White */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 78 15% 15%; /* Darker Olive */
-    --popover-foreground: 40 33% 97%; /* Warm White */
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 78 37% 45%; /* Lighter Olive */
-    --primary-foreground: 78 20% 12%; /* Dark Olive */
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 39 20% 25%; /* Dark Beige */
-    --secondary-foreground: 40 33% 97%; /* Warm White */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 78 10% 20%; /* Muted Dark Olive */
-    --muted-foreground: 39 35% 70%; /* Light Beige */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 23 40% 35%; /* Dark Peach */
-    --accent-foreground: 40 33% 97%; /* Warm White */
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 78 10% 25%; /* Dark Border */
-    --input: 78 10% 18%; /* Dark Input */
-    --ring: 78 37% 45%; /* Lighter Olive */
-    --sidebar-background: 78 15% 15%;
-    --sidebar-foreground: 40 33% 97%;
-    --sidebar-primary: 78 37% 45%;
-    --sidebar-primary-foreground: 78 20% 12%;
-    --sidebar-accent: 78 10% 20%;
-    --sidebar-accent-foreground: 40 33% 97%;
-    --sidebar-border: 78 10% 25%;
-    --sidebar-ring: 78 37% 45%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -119,99 +120,125 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    background: var(--gradient-subtle);
+    background: var(--gradient-dark);
     min-height: 100vh;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
     background: hsl(var(--muted));
-    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary));
-    border-radius: 4px;
-    border: 2px solid hsl(var(--background));
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
+    background: var(--gradient-neon-primary);
+    border-radius: 3px;
   }
 }
 
 @layer components {
-  /* Clean Professional Buttons */
-  .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200;
+  /* Neon Button Variants */
+  .btn-neon-primary {
+    @apply relative overflow-hidden bg-transparent border border-primary text-primary hover:text-primary-foreground;
+    box-shadow: var(--glow-cyan);
+    transition: var(--transition-smooth);
   }
 
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors duration-200;
+  .btn-neon-primary:hover {
+    background: var(--gradient-neon-primary);
+    box-shadow: var(--glow-cyan), 0 0 30px hsl(180 100% 50% / 0.4);
+    transform: translateY(-2px);
   }
 
-  .btn-outline {
-    @apply border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-200;
+  .btn-neon-secondary {
+    @apply relative overflow-hidden bg-transparent border border-secondary text-secondary hover:text-secondary-foreground;
+    box-shadow: var(--glow-purple);
+    transition: var(--transition-smooth);
   }
 
-  /* Clean Professional Cards */
-  .card-minimal {
-    @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-shadow duration-200;
+  .btn-neon-secondary:hover {
+    background: var(--gradient-neon-secondary);
+    box-shadow: var(--glow-purple), 0 0 30px hsl(260 100% 65% / 0.4);
+    transform: translateY(-2px);
   }
 
-  /* Professional Typography */
-  .heading-primary {
-    @apply text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-tight;
+  /* Neon Cards */
+  .card-neon {
+    @apply relative bg-card border border-border backdrop-blur-sm;
+    background: var(--gradient-surface);
+    transition: var(--transition-smooth);
   }
 
-  .heading-secondary {
-    @apply text-2xl md:text-3xl font-light text-foreground tracking-wide;
+  .card-neon:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-4px);
   }
 
-  .text-body {
-    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
-  }
-
-  /* Clean Navigation */
-  .nav-link {
-    @apply relative text-foreground hover:text-primary transition-colors duration-200;
-  }
-
-  .nav-link.active {
+  /* Neon Text Effects */
+  .text-neon-primary {
     @apply text-primary;
+    text-shadow: var(--glow-cyan);
   }
 
-  .nav-link::after {
+  .text-neon-secondary {
+    @apply text-secondary;
+    text-shadow: var(--glow-purple);
+  }
+
+  /* Animated Underline */
+  .underline-neon {
+    @apply relative;
+  }
+
+  .underline-neon::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 1px;
+    height: 2px;
     bottom: -4px;
     left: 0;
-    background: hsl(var(--primary));
-    transition: width 0.3s ease;
+    background: var(--gradient-neon-primary);
+    transition: var(--transition-smooth);
   }
 
-  .nav-link:hover::after,
-  .nav-link.active::after {
+  .underline-neon:hover::after {
     width: 100%;
   }
 
-  /* Image Overlay */
-  .image-overlay {
-    @apply absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center;
+  /* Floating Animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 
-  /* Section Spacing */
-  .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 
-  .container-padding {
-    @apply px-6 md:px-8 lg:px-12;
+  /* Pulse Glow Animation */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: var(--glow-cyan);
+    }
+    to {
+      box-shadow: var(--glow-cyan), 0 0 40px hsl(180 100% 50% / 0.6);
+    }
+  }
+
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: -1px -1px;
   }
 }

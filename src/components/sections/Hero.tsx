@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Eye, ExternalLink } from "lucide-react";
-import projectMarquee from "@/assets/project-marquee.jpg";
-import projectHouse from "@/assets/project-house.jpg";
-import projectShowroom from "@/assets/project-showroom.jpg";
+import { ArrowDown, Download, Mail } from "lucide-react";
+import heroBackground from "@/assets/hero-bg.jpg";
+const profilePic = "/lovable-uploads/c9e25fed-2a84-4bf3-bfe4-94c9bd4dd375.png";
 
 const Hero = () => {
   const scrollToPortfolio = () => {
@@ -13,107 +12,97 @@ const Hero = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const featuredProjects = [
-    {
-      title: "Luxury Marquee Design",
-      category: "Event Design",
-      image: projectMarquee,
-      description: "Premium wedding event design featuring elegant spatial planning and sophisticated lighting systems."
-    },
-    {
-      title: "Contemporary House",
-      category: "Residential",
-      image: projectHouse,
-      description: "Modern residential architecture with sustainable features and integrated landscape elements."
-    },
-    {
-      title: "Furniture Showroom",
-      category: "Commercial",
-      image: projectShowroom,
-      description: "Contemporary commercial space optimized for product display and customer experience."
-    }
-  ];
-
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col">
-      {/* Header Info */}
-      <div className="absolute top-0 left-0 right-0 z-20 pt-24 pb-8 bg-gradient-to-b from-black/60 to-transparent">
-        <div className="container mx-auto container-padding text-center text-white">
-          <h1 className="heading-primary mb-4">
-            Muhammad Rizwan
-          </h1>
-          <p className="text-xl md:text-2xl font-light mb-6 opacity-90">
-            Architect & Designer
-          </p>
-          <p className="text-body max-w-2xl mx-auto opacity-80">
-            Creating innovative spaces through architecture, interior design, and landscape planning
-          </p>
-        </div>
-      </div>
-
-      {/* Full-Screen Project Showcase */}
-      <div className="flex-1 relative">
-        <div className="grid md:grid-cols-3 h-full min-h-[70vh]">
-          {featuredProjects.map((project, index) => (
-            <div 
-              key={index}
-              className="relative overflow-hidden group cursor-pointer"
-            >
+    <section 
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${heroBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Animated Grid Pattern Overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-20"></div>
+      
+      {/* Floating Geometric Shapes */}
+      <div className="absolute top-20 left-10 w-20 h-20 border border-primary/30 rotate-45 animate-pulse-glow"></div>
+      <div className="absolute bottom-20 right-10 w-16 h-16 border border-secondary/30 rotate-12 animate-float"></div>
+      <div className="absolute top-1/3 right-20 w-12 h-12 bg-accent/20 rotate-45 animate-pulse"></div>
+      
+      <div className="container mx-auto px-6 text-center z-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Profile Image */}
+          <div className="mb-8 relative inline-block">
+            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary shadow-glow-cyan mx-auto animate-float">
               <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                src={profilePic} 
+                alt="Muhammad Rizwan - Architect & Designer"
+                className="w-full h-full object-cover"
               />
-              <div className="image-overlay">
-                <div className="text-center text-white p-6">
-                  <div className="text-sm uppercase tracking-wider mb-2 opacity-80">
-                    {project.category}
-                  </div>
-                  <h3 className="text-xl font-medium mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm opacity-90 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-black">
-                    <Eye className="h-4 w-4 mr-2" />
-                    View Project
-                  </Button>
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-neon-primary rounded-full flex items-center justify-center animate-pulse-glow">
+              <span className="text-primary-foreground font-bold">MR</span>
+            </div>
+          </div>
 
-      {/* Bottom CTA */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 pb-8 bg-gradient-to-t from-black/60 to-transparent">
-        <div className="container mx-auto container-padding text-center">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          {/* Main Heading */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <span className="block text-neon-primary">VisionarySpaces</span>
+          </h1>
+
+          {/* Hero Tagline */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-neon-secondary">
+            Designing the Future: Architecture Meets Innovation
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            Architecture, Interior Design, Landscaping & AI-powered Design Solutions
+          </p>
+
+          {/* Description */}
+          <p className="text-lg text-foreground/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            I am an architect and designer specializing in interior design, landscaping, 
+            furniture showroom design, apartment and house projects, marquee designs, 
+            and AI-powered design solutions.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
             <Button 
-              variant="default" 
-              size="lg" 
+              variant="hero" 
+              size="xl" 
               onClick={scrollToPortfolio}
-              className="bg-white text-black hover:bg-white/90"
+              className="group"
             >
-              <ExternalLink className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               View Portfolio
             </Button>
             <Button 
-              variant="outline" 
-              size="lg" 
+              variant="neonSecondary" 
+              size="xl" 
               onClick={scrollToContact}
-              className="border-white text-white hover:bg-white hover:text-black"
+              className="group"
             >
-              Get In Touch
+              <Mail className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+              Contact Me
             </Button>
           </div>
 
           {/* Scroll Indicator */}
           <div className="animate-bounce">
-            <ArrowDown className="h-6 w-6 text-white mx-auto opacity-70" />
+            <ArrowDown className="h-8 w-8 text-primary mx-auto" />
           </div>
         </div>
+      </div>
+
+      {/* Background Animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-ping"></div>
+        <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-secondary rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-accent rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
       </div>
     </section>
   );

@@ -86,66 +86,70 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="section-padding bg-background">
-      <div className="container mx-auto max-w-7xl container-padding">
+    <section id="portfolio" className="py-20 px-6 bg-gradient-dark">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="heading-primary mb-6">
-            Selected Work
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Featured <span className="text-neon-primary">Portfolio</span>
           </h2>
-          <div className="w-16 h-0.5 bg-primary mx-auto mb-8"></div>
-          <p className="text-body max-w-2xl mx-auto">
-            A collection of architectural and design projects spanning residential, commercial, and hospitality spaces.
+          <div className="w-24 h-1 bg-gradient-neon-primary mx-auto mb-8"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Explore my diverse range of architectural and design projects, from residential homes to commercial spaces and event designs.
           </p>
         </div>
 
         {/* Featured Project */}
-        <div className="mb-20">
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <Badge variant="secondary" className="bg-gradient-neon-secondary mb-4">
+              Featured Project
+            </Badge>
+            <h3 className="text-2xl font-semibold text-neon-secondary">Spotlight</h3>
+          </div>
+          
           {projects
             .filter(project => project.featured)
             .map(project => (
-              <div key={project.id} className="grid lg:grid-cols-2 gap-0 card-minimal overflow-hidden">
-                <div className="relative overflow-hidden group h-96 lg:h-[500px]">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="image-overlay text-white">
-                    <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-black">
+              <Card key={project.id} className="card-neon overflow-hidden">
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="relative overflow-hidden group">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <CardContent className="p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-4 mb-4">
+                      <Badge variant="outline" className="border-primary text-primary">
+                        {project.category}
+                      </Badge>
+                      <div className="flex items-center text-muted-foreground text-sm">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {project.year}
+                      </div>
+                      <div className="flex items-center text-muted-foreground text-sm">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        {project.location}
+                      </div>
+                    </div>
+                    <h4 className="text-2xl font-bold mb-4 text-neon-primary">{project.title}</h4>
+                    <p className="text-foreground/80 mb-6 leading-relaxed">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tools.map(tool => (
+                        <Badge key={tool} variant="secondary" className="text-xs">
+                          {tool}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Button variant="neonPrimary" className="w-fit">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View Details
                     </Button>
-                  </div>
+                  </CardContent>
                 </div>
-                <div className="p-12 flex flex-col justify-center bg-card">
-                  <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
-                    <Badge variant="outline" className="border-primary text-primary font-medium">
-                      {project.category}
-                    </Badge>
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {project.year}
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      {project.location}
-                    </div>
-                  </div>
-                  <h3 className="heading-secondary mb-6">{project.title}</h3>
-                  <p className="text-body mb-8">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {project.tools.map(tool => (
-                      <Badge key={tool} variant="secondary" className="text-xs">
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Button variant="default">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    View Project
-                  </Button>
-                </div>
-              </div>
+              </Card>
             ))
           }
         </div>
@@ -157,29 +161,30 @@ const Portfolio = () => {
             .map((project, index) => (
               <Card 
                 key={project.id} 
-                className="card-minimal overflow-hidden group"
+                className="card-neon overflow-hidden group"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative overflow-hidden h-64">
+                <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="image-overlay text-white">
-                    <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-black">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
+                    <Button variant="neonSecondary" size="sm">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View
                     </Button>
                   </div>
                   <Badge 
                     variant="secondary" 
-                    className="absolute top-4 left-4 bg-white/90 text-foreground"
+                    className="absolute top-4 left-4 bg-gradient-neon-secondary"
                   >
                     {project.category}
                   </Badge>
                 </div>
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
                       {project.year}
@@ -189,10 +194,10 @@ const Portfolio = () => {
                       {project.location.split(',')[0]}
                     </div>
                   </div>
-                  <h4 className="text-xl font-medium mb-3 group-hover:text-primary transition-colors">
+                  <h4 className="text-xl font-semibold mb-3 group-hover:text-neon-primary transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                  <p className="text-sm text-foreground/70 mb-4 line-clamp-3">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1">
@@ -214,16 +219,16 @@ const Portfolio = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
-          <p className="text-body mb-8">
-            Ready to start your next project?
+        <div className="text-center mt-16">
+          <p className="text-lg text-muted-foreground mb-6">
+            Interested in working together? Let's bring your vision to life.
           </p>
           <Button 
-            variant="default" 
+            variant="hero" 
             size="lg"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Get In Touch
+            Start Your Project
           </Button>
         </div>
       </div>
